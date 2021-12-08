@@ -9,15 +9,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Video(props) {
   return (
     <>
-      <h1>{props.videoTitle}</h1>
-      <div className="video-wrapper">
-        <div className="video-container">
-          <video width="640" height="380" className='video-tag' controls>
-            <source src={props.fileName} type='video/mp4' />
-          </video>
-        </div>
+      <div style={{display: "flex", flexDirection: "column"}}>
+        <h1>{props.videoTitle}</h1>
+        <video className='video-tag' controls>
+          <source src={props.fileName} type='video/mp4' />
+        </video>
       </div>
-      <a className="link" href={props.link} target="_blank" rel="noopener noreferrer">{props.linkText}</a>
+      <a className="link" href={props.link} target="_blank" rel="noopener noreferrer">{props.link}</a>
     </>
   );
 }
