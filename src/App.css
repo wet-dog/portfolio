@@ -23,7 +23,7 @@ iframe {
 }
 
 .video-tag {
-  width: 80vmin;
+  width: 100%;
   margin: auto;
 }
 
@@ -45,8 +45,8 @@ h1 {
   font-weight: 700;
   font-style: normal;
   position: relative;
-  margin: auto;
-  padding-bottom: .5em;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
 }
 
 p {
@@ -54,11 +54,16 @@ p {
   font-family: "Palanquin", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: .75em;
-  margin-right: auto;
+  text-align: left;
+  width: 80vmin;
 }
 
 .navbar-brand {
   font-family: calling-code,sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.IconButton {
+  margin: 1em;
 }

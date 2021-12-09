@@ -13,6 +13,10 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import CircleIcon from '@mui/icons-material/Circle';
+
 import text from "./bobRossDescription.js";
 // import text from "./glowRunnersDescription.js";
 // import text from "./pirateShipDescription.js";
@@ -21,7 +25,9 @@ function Carousel(props) {
   const [index, setIndex] = useState(0);
   const [showFrontArrow, setShowFrontArrow] = useState(true);
   const [showBackArrow, setShowBackArrow] = useState(true);
-
+  
+  const [view, setView] = React.useState('list');
+  
   const videos = [
     <Video key="index"
       videoTitle="Bob Ross the Boss"
@@ -39,6 +45,11 @@ function Carousel(props) {
     </Video>    
   ]
 
+  const handleChange = (event, nextView) => {
+    setView(nextView);
+    setIndex(nextView);
+  };
+
   useEffect(() => {
     if (index === 0)
       setShowBackArrow(false);
@@ -49,36 +60,77 @@ function Carousel(props) {
       setShowFrontArrow(false);
     else
       setShowFrontArrow(true);
-  }, [index, videos.length]);
+
+    setView(index);
+  }, [view, index, videos.length]);
 
   return (
     <>
-      <div style={{display: "flex", flexDirection: "row"}}>
-        <IconButton 
+      <h1>{videos[index].props.videoTitle}</h1>
+      
+      <div style={{display: "flex", flexDirection: "row", width: "100vmin"}}>
+        <IconButton
+          className="IconButton"
           style={showBackArrow ? {} : { visibility: 'hidden' }}
-          sx={{ color: "white", float: "left"}}
+          sx={{ color: "white", marginInline: ".5em"}}
           size=""
           disableRipple="true"
           onClick={() => setIndex(Math.max(0, index - 1))}
         >
-          <ArrowBackIcon fontSize="large" />
+          <ArrowBackIcon sx={{fontSize: "2em"}}/>
         </IconButton>
 
-        <div style={{display: "flex", flexDirection: "column", paddingTop: "2em"}}>
-          <h1>{videos[index].props.videoTitle}</h1>
+        <div style={{display: "flex", flexDirection: "column"}}>
           {videos[index]}
         </div>
 
-        <IconButton 
+        <IconButton
+          className="IconButton"
           style={showFrontArrow ? {} : { visibility: 'hidden' }}
-          sx={{ color: "white", float: "left"}}
+          sx={{ color: "white", marginInline: ".5em"}}
           size=""
           disableRipple="true"
           onClick={() => setIndex(Math.min(index + 1, 1))}
         >
-          <ArrowForwardIcon fontSize="large" />
+          <ArrowForwardIcon sx={{fontSize: "2em"}}/>
         </IconButton>
       </div>
+
+      <ToggleButtonGroup
+        sx={{
+          '& .MuiToggleButtonGroup-grouped': {
+            border: 0,
+            marginInline: "1em",
+            marginTop: "1em",
+            color: "grey",
+            '&.Mui-disabled': {
+              border: 0,
+            },
+            '&:not(:first-of-type)': {
+              borderRadius: "5em",
+            },
+            '&:first-of-type': {
+              borderRadius: "5em",
+            },
+            '&.Mui-selected': {
+              border: 0,
+              color: "white",
+            },            
+          },
+        }}
+        value={view}
+        exclusive
+        onChange={handleChange}
+      >
+      {videos.map((_, i) => 
+        <ToggleButton value={i}>
+          <CircleIcon />
+        </ToggleButton>
+      )}
+      </ToggleButtonGroup>
+
+      <a className="link" href={videos[index].props.link} target="_blank" rel="noopener noreferrer">{videos[index].props.link}</a>
+      <p>{text}</p>
     </>
   );
 }
@@ -87,8 +139,6 @@ function Video(props) {
   return (
     <>
       <video className='video-tag' src={props.fileName} controls></video>
-      <a className="link" href={props.link} target="_blank" rel="noopener noreferrer">{props.link}</a>
-      <p>{text}</p>
     </>
   );
 }
