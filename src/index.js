@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <link rel="stylesheet" href="https://use.typekit.net/gnm1bdt.css"></link>
+    <link rel="stylesheet" href="https://use.typekit.net/gnm1bdt.css"></link>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

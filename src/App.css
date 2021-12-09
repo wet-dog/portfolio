@@ -28,8 +28,12 @@ iframe {
 }
 
 .link {
+  padding-top: 1em;
   position: relative;
   color: white;
+  font-family: "Palanquin", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: .55em;
 }
 
 .link:hover {
@@ -37,6 +41,24 @@ iframe {
 }
 
 h1 {
+  font-family: calling-code,sans-serif;
+  font-weight: 700;
+  font-style: normal;
   position: relative;
+  margin: auto;
+  padding-bottom: .5em;
+}
+
+p {
+  padding-top: 1.5em;
+  font-family: "Palanquin", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: .75em;
   margin-right: auto;
+}
+
+.navbar-brand {
+  font-family: calling-code,sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
