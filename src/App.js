@@ -53,31 +53,34 @@ function Carousel(props) {
 
   return (
     <>
-      <div style={{display: "flex", flexDirection: "row"}}>
-        <IconButton 
+      <div style={{display: "flex", justifyContent: "center", alignItems:"center", width: "100vw"}} className="carousel-container">
+        <Button startIcon={<ArrowBackIcon fontSize="large" />} 
           style={showBackArrow ? {} : { visibility: 'hidden' }}
-          sx={{ color: "white", float: "left"}}
+          sx={{ color: "white", fontSize: ".75em", height: "100%", width: "6em"}}
           size=""
           disableRipple="true"
           onClick={() => setIndex(Math.max(0, index - 1))}
+          fullWidth="true"
+          className="Button"
         >
-          <ArrowBackIcon fontSize="large" />
-        </IconButton>
+          Prev
+        </Button>
 
-        <div style={{display: "flex", flexDirection: "column", paddingTop: "2em"}}>
+        <div style={{display: "flex", flexDirection: "column", width: "80vmin", marginTop: "2em", marginInline: ".5em"}}>
           <h1>{videos[index].props.videoTitle}</h1>
           {videos[index]}
         </div>
 
-        <IconButton 
+        <Button startIcon={<ArrowForwardIcon fontSize="large" />} 
           style={showFrontArrow ? {} : { visibility: 'hidden' }}
-          sx={{ color: "white", float: "left"}}
+          sx={{ color: "white", fontSize: ".75em", height: "2em", width: "6em"}}
           size=""
           disableRipple="true"
-          onClick={() => setIndex(Math.min(index + 1, 1))}
+          onClick={() => setIndex(Math.min(index + 1, videos.length - 1))}
+          className="Button"
         >
-          <ArrowForwardIcon fontSize="large" />
-        </IconButton>
+          Next
+        </Button>
       </div>
     </>
   );
@@ -98,7 +101,7 @@ function App() {
     <div className="App">
       <Navbar variant="dark" bg="dark" className="navbar">
         <Container>
-          <Navbar.Brand classname="navbar-brand">James Johnson</Navbar.Brand>
+          <Navbar.Brand className="navbar-brand">James Johnson</Navbar.Brand>
           <Nav className="me-auto">
           </Nav>
         </Container>
