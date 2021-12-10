@@ -30,6 +30,13 @@ function Carousel(props) {
   
   const videos = [
     <Video key="index"
+      videoTitle="OpenGL Tech Demo"
+      fileName="./temppirateship.mp4" 
+      link="https://github.com/wet-dog/PirateShip"
+      linkText="Try it out here"
+    >
+    </Video>,
+    <Video key="index"
       videoTitle="Bob Ross the Boss"
       fileName="./bobrosstheboss.mp4"
       link="https://wet-dog.github.io/BobRossTheBossWebGL/"
@@ -42,7 +49,7 @@ function Carousel(props) {
       link="https://briggsywxf.github.io/bathhack21/"
       linkText="Try it out here"
     >
-    </Video>    
+    </Video>
   ]
 
   const handleChange = (event, nextView) => {
@@ -90,7 +97,7 @@ function Carousel(props) {
           sx={{ color: "white", marginInline: ".5em"}}
           size=""
           disableRipple="true"
-          onClick={() => setIndex(Math.min(index + 1, 1))}
+          onClick={() => setIndex(Math.min(index + 1, videos.length - 1))}
         >
           <ArrowForwardIcon sx={{fontSize: "2em"}}/>
         </IconButton>
